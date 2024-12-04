@@ -42,9 +42,7 @@ def x_mas():
             if lines[i][j] == "A":
                 diag_1 = lines[i - 1][j - 1] + lines[i + 1][j + 1]
                 diag_2 = lines[i - 1][j + 1] + lines[i + 1][j - 1]
-                if (diag_1 == "MS" or diag_1 == "SM") and (
-                    diag_2 == "MS" or diag_2 == "SM"
-                ):
+                if {diag_1, diag_2} <= {"MS", "SM"}:
                     x_mases += 1
 
     return x_mases
