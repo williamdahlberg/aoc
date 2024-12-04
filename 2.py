@@ -84,6 +84,6 @@ def non_brute():
 # print(set(unsafe) - set(unsafe_non))
 
 
-print(is_safe2([91, 94, 93, 88, 89]))
-brute()
-print(len(safe_reports))
+print(is_safe2([11, 12, 16, 17, 20, 21, 23, 24]))
+non_brute()
+print(len(safe_non))
