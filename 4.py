@@ -4,11 +4,11 @@ with open("4.input") as f:
 size = x, y = len(lines), len(lines[0])
 
 
-def get(c, i, j):
+def get(i, j):
     if i < 0 or j < 0:
         return ""
     try:
-        return c[i][j]
+        return lines[i][j]
     except IndexError:
         return ""
 
@@ -17,16 +17,16 @@ def xmas():
     xmases = 0
     for i in range(x):
         for j in range(y):
-            if get(lines, i, j) == "X":
+            if get(i, j) == "X":
                 words = [
-                    get(lines, i, j + 1) + get(lines, i, j + 2) + get(lines, i, j + 3),
-                    get(lines, i, j - 1) + get(lines, i, j - 2) + get(lines, i, j - 3),
-                    get(lines, i + 1, j) + get(lines, i + 2, j) + get(lines, i + 3, j),
-                    get(lines, i - 1, j) + get(lines, i - 2, j) + get(lines, i - 3, j),
-                    get(lines, i + 1, j + 1) + get(lines, i + 2, j + 2) + get(lines, i + 3, j + 3),
-                    get(lines, i + 1, j - 1) + get(lines, i + 2, j - 2) + get(lines, i + 3, j - 3),
-                    get(lines, i - 1, j + 1) + get(lines, i - 2, j + 2) + get(lines, i - 3, j + 3),
-                    get(lines, i - 1, j - 1) + get(lines, i - 2, j - 2) + get(lines, i - 3, j - 3),
+                    get(i, j + 1) + get(i, j + 2) + get(i, j + 3),
+                    get(i, j - 1) + get(i, j - 2) + get(i, j - 3),
+                    get(i + 1, j) + get(i + 2, j) + get(i + 3, j),
+                    get(i - 1, j) + get(i - 2, j) + get(i - 3, j),
+                    get(i + 1, j + 1) + get(i + 2, j + 2) + get(i + 3, j + 3),
+                    get(i + 1, j - 1) + get(i + 2, j - 2) + get(i + 3, j - 3),
+                    get(i - 1, j + 1) + get(i - 2, j + 2) + get(i - 3, j + 3),
+                    get(i - 1, j - 1) + get(i - 2, j - 2) + get(i - 3, j - 3),
                 ]
 
                 xmases += words.count("MAS")
@@ -51,3 +51,4 @@ def x_mas():
 
 
 print(xmas())
+print(x_mas())
