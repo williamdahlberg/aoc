@@ -20,7 +20,8 @@ def rules_dict():
 
 
 def correct_prints():
-    total = 0
+    correct = []
+    incorrect = []
     rules = rules_dict()
     for p in print_lines:
         numbers = list(map(int, p.split(",")))
@@ -28,16 +29,21 @@ def correct_prints():
             before_me = set(numbers[:i])
             intersection = set.intersection(rules[n], before_me)
             if intersection:
+                incorrect.append(numbers)
                 # incorrect
                 break
         else:
-            total += middle(numbers)
+            correct.append(numbers)
 
-    return total
+    return correct, incorrect
 
 
 def middle(l):
     return l[int(len(l) / 2)]
 
 
-print(correct_prints())
+def calc_correct():
+    return sum(middle(p) for p in correct_prints()[0])
+
+
+# Part 2
