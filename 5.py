@@ -72,4 +72,21 @@ def calc_incorrect():
     return sum(middle(p) for p in fix_incorrect())
 
 
-print(calc_incorrect())
+# Both parts cmp solution
+def compare(x, y):
+    if y in rules_dict()[x]:
+        return -1
+    return 0
+
+
+correct_sum = 0
+incorrect_sum = 0
+for p in print_lines:
+    numbers = list(map(int, p.split(",")))
+    s = sorted(numbers, key=functools.cmp_to_key(compare))
+    if s == numbers:
+        correct_sum += s[len(s) // 2]
+    else:
+        incorrect_sum += s[len(s) // 2]
+
+print(correct_sum, incorrect_sum)
