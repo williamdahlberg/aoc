@@ -76,6 +76,8 @@ def calc_incorrect():
 def compare(x, y):
     if y in rules_dict()[x]:
         return -1
+    if x in rules_dict()[y]:
+        return 1
     return 0
 
 
