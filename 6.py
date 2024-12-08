@@ -1,5 +1,4 @@
 from copy import copy
-import itertools
 
 
 with open("6.input") as f:
@@ -83,8 +82,6 @@ def find_working_positions():
     working_positions = set()
     for x, y in find_cells():
         pos = (x, y)
-        if (x, y) == (3, 6):
-            pass
         if get_char(pos, lines) != ".":
             continue
         new_grid = get_new_grid(pos, "#")
