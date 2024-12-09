@@ -31,8 +31,6 @@ def shift(l):
 
 
 # part 2
-
-
 def file_shift(l):
     for block_id in reversed(range(10000)):
         try:
@@ -43,15 +41,15 @@ def file_shift(l):
         old_end_ix = old_ix + block_len
         new_ix = find_spot(l, block_len)
         if new_ix and new_ix < old_ix:
-            l = (
-                l[:new_ix]
-                + list(repeat(block_id, block_len))
-                + [
-                    -1 if x == block_id else x
-                    for x in l[new_ix + block_len : old_end_ix]
-                ]
-                + l[old_ix + block_len :]
-            )
+        l = (
+            l[:new_ix]
+            + list(repeat(block_id, block_len))
+            + [
+                -1 if x == block_id else x
+                for x in l[new_ix + block_len : old_end_ix]
+            ]
+            + l[old_ix + block_len :]
+        )
     return l
 
 
