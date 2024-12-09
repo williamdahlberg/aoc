@@ -32,7 +32,7 @@ def shift(l):
 
 # part 2
 def file_shift(l):
-    for block_id in reversed(range(10000)):
+    for block_id in reversed(range(len(l))):
         try:
             old_ix = l.index(block_id)
         except ValueError:
