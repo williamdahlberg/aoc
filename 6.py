@@ -51,7 +51,7 @@ def walk(pos, direction, grid):
     return new_pos, direction
 
 
-def find_cells():
+def find_path():
     position, direction = find_start(lines)
     print(f"start: {position=}, {direction=}")
     found = set()
@@ -66,7 +66,7 @@ def find_cells():
 
 
 def calc():
-    print(len(find_cells()))
+    print(len(find_path()))
 
 
 # part 2
@@ -80,7 +80,7 @@ def get_new_grid(pos, char):
 
 def find_working_positions():
     working_positions = set()
-    for x, y in find_cells():
+    for x, y in find_path():
         pos = (x, y)
         if get_char(pos, lines) != ".":
             continue

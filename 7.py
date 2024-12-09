@@ -20,8 +20,7 @@ total = 0
 for line in lines:
     result, *numbers = list(map(int, line.replace(":", "").split()))
 
-    total += result if result in get_values(numbers) else 0
-print(total)
+    if result in get_values(numbers):
+        total += result
 
-# p1 right 12940396350192
-# p2 wrong 12940396445074
+print(total)
