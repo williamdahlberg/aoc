@@ -14,4 +14,4 @@ def path(zero_c, c):
 
 
 [path(c, c) for c in grid if grid[c][0] == 0]
-print(sum([len(s) for _, (n, s) in grid.items() if n == 9]))
+print(list(map(sum, zip(*[(len(set(s)), len(s)) for n, s in grid.values() if n > 8]))))
