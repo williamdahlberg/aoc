@@ -18,6 +18,6 @@ for i in range(75):
     new_c = Counter()
     for stone, amount in c.items():
         new_c += blink(stone, amount)
-        c = new_c
+    c = new_c
 
 print(c.total())
