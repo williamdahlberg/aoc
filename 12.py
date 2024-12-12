@@ -6,9 +6,7 @@ def measure(coord):
 
     area, perimeter, edges = 1, 0, 0
     for dir in (1j, -1j, 1, -1):
-        new_char, _ = grid.get(coord + dir, ("", True))
-
-        if new_char != char:
+        if grid.get(coord + dir, ("", True))[0] != char:
             perimeter += 1
             right = coord + dir * 1j
             top_right = coord + dir + dir * 1j
