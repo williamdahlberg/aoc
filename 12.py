@@ -1,6 +1,3 @@
-from operator import mul
-
-
 grid = {
     x + y * 1j: (c, False)
     for y, l in enumerate(open("12.input").readlines())
@@ -30,4 +27,4 @@ def measure(coord):
 
 
 measures = [measure(coord) for coord in grid]
-print(sum(map(mul, *zip(*measures))))
+print(sum([a * p for a, p in measures]))
