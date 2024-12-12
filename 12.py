@@ -1,30 +1,36 @@
+def measure(coord):
+    char, visited = grid.get(coord, ("", True))
+    if visited:
+        return 0, 0, 0
+    grid[coord] = (char, True)
+
+    area, perimeter, edges = 1, 0, 0
+    for dir in (1j, -1j, 1, -1):
+        new_char, _ = grid.get(coord + dir, ("", True))
+
+        if new_char != char:
+            perimeter += 1
+            right = coord + dir * 1j
+            top_right = coord + dir + dir * 1j
+            if grid.get(right, ("", ""))[0] != char:
+                edges += 1
+            elif grid.get(top_right, ("", ""))[0] == char:
+                edges += 1
+
+        else:
+            a, p, e = measure(coord + dir)
+            area += a
+            perimeter += p
+            edges += e
+
+    return area, perimeter, edges
+
+
 grid = {
     x + y * 1j: (c, False)
     for y, l in enumerate(open("12.input").readlines())
     for x, c in enumerate(l.strip())
 }
 
-
-def measure(coord):
-    char, visited = grid[coord]
-    if visited:
-        return 0, 0
-    grid[coord] = (char, True)
-
-    area, perimeter = 1, 0
-    for dir in (1j, -1j, 1, -1):
-        new_coord = coord + dir
-        if not new_coord in grid:
-            perimeter += 1
-        elif grid[new_coord][0] == grid[coord][0]:
-            a, p = measure(new_coord)
-            area += a
-            perimeter += p
-        else:
-            perimeter += 1
-
-    return area, perimeter
-
-
 measures = [measure(coord) for coord in grid]
-print(sum([a * p for a, p in measures]))
+print(list(map(sum, zip(*[(a * p, a * e) for a, p, e in measures]))))
