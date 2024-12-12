@@ -12,9 +12,10 @@ def measure(coord):
             perimeter += 1
             right = coord + dir * 1j
             top_right = coord + dir + dir * 1j
-            if grid.get(right, ("", ""))[0] != char:
-                edges += 1
-            elif grid.get(top_right, ("", ""))[0] == char:
+            if (
+                grid.get(right, ("", ""))[0] != char
+                or grid.get(top_right, ("", ""))[0] == char
+            ):
                 edges += 1
 
         else:
